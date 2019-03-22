@@ -1,0 +1,27 @@
+@import "../../styles/global/global.styl"
+
+.button
+  position: relative
+  padding: 10px 0
+  box-sizing: border-box
+  outline: none
+  border: 0
+  text-align: center
+  border-radius: 2px
+  color: $pure-white
+  text-transform: uppercase
+  background-color: transparent
+  transition: background-color .1s
+  &:hover
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15)
+
+  &--bg-tree-poppy
+    background-color: $tree-poppy
+    &:hover
+      background-color: $ship-gray
+
+  &--bg-ship-gray
+    background-color: $ship-gray
+    &:hover
+      background-color: $tree-poppy
+

@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>ew</title>
+
+    <style>
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #FFFFFF;
+            z-index: 99;
+            transition: 1s;
+        }
+
+        .loader {
+            height: 100%;
+            width: 100%;
+            z-index: 99;
+        }
+
+        .loader .l_main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 172px;
+            height: 128px;
+            margin: 0;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
+        }
+
+        @media (max-width: 550px) {
+            .loader {
+                -webkit-transform: scale(0.75);
+                transform: scale(0.75)
+            }
+        }
+
+        @media (max-width: 440px) {
+            .loader {
+                -webkit-transform: scale(0.5);
+                transform: scale(0.5)
+            }
+        }
+
+        .l_square {
+            position: relative
+        }
+
+        .l_square:nth-child(1) {
+            margin-left: 0px
+        }
+
+        .l_square:nth-child(2) {
+            margin-left: 44px
+        }
+
+        .l_square:nth-child(3) {
+            margin-left: 88px
+        }
+
+        .l_square:nth-child(4) {
+            margin-left: 132px
+        }
+
+        .l_square span {
+            position: absolute;
+            top: 0px;
+            left: 20px;
+            height: 36px;
+            width: 36px;
+            border-radius: 2px;
+            background-color: #F8941E
+        }
+
+        .l_square span:nth-child(1) {
+            top: 0px
+        }
+
+        .l_square span:nth-child(2) {
+            top: 44px
+        }
+
+        .l_square span:nth-child(3) {
+            top: 88px
+        }
+
+        .l_square:nth-child(1) span {
+            -webkit-animation: animsquare1 2s infinite ease-in;
+            animation: animsquare1 2s infinite ease-in
+        }
+
+        .l_square:nth-child(2) span {
+            -webkit-animation: animsquare2 2s infinite ease-in;
+            animation: animsquare2 2s infinite ease-in
+        }
+
+        .l_square:nth-child(3) span {
+            -webkit-animation: animsquare3 2s infinite ease-in;
+            animation: animsquare3 2s infinite ease-in
+        }
+
+        .l_square:nth-child(4) span {
+            -webkit-animation: animsquare4 2s infinite ease-in;
+            animation: animsquare4 2s infinite ease-in
+        }
+
+        .l_square span:nth-child(1) {
+            -webkit-animation-delay: 0.00s;
+            animation-delay: 0.00s
+        }
+
+        .l_square span:nth-child(2) {
+            -webkit-animation-delay: 0.15s;
+            animation-delay: 0.15s
+        }
+
+        .l_square span:nth-child(3) {
+            -webkit-animation-delay: 0.30s;
+            animation-delay: 0.30s
+        }
+
+        @-webkit-keyframes animsquare1 {
+            0%, 5%, 95%, 100% {
+                -webkit-transform: translate(0px, 0px) rotate(0deg);
+                transform: translate(0px, 0px) rotate(0deg)
+            }
+            30%, 70% {
+                -webkit-transform: translate(-40px, 0px) rotate(-90deg);
+                transform: translate(-40px, 0px) rotate(-90deg)
+            }
+        }
+
+        @keyframes animsquare1 {
+            0%, 5%, 95%, 100% {
+                -webkit-transform: translate(0px, 0px) rotate(0deg);
+                transform: translate(0px, 0px) rotate(0deg)
+            }
+            30%, 70% {
+                -webkit-transform: translate(-40px, 0px) rotate(-90deg);
+                transform: translate(-40px, 0px) rotate(-90deg)
+            }
+        }
+
+        @-webkit-keyframes animsquare2 {
+            0%, 10%, 90%, 100% {
+                -webkit-transform: translate(0px, 0px) rotate(0deg);
+                transform: translate(0px, 0px) rotate(0deg)
+            }
+            35%, 65% {
+                -webkit-transform: translate(-40px, 0px) rotate(-90deg);
+                transform: translate(-40px, 0px) rotate(-90deg)
+            }
+        }
+
+        @keyframes animsquare2 {
+            0%, 10%, 90%, 100% {
+                -webkit-transform: translate(0px, 0px) rotate(0deg);
+                transform: translate(0px, 0px) rotate(0deg)
+            }
+            35%, 65% {
+                -webkit-transform: translate(-40px, 0px) rotate(-90deg);
+                transform: translate(-40px, 0px) rotate(-90deg)
+            }
+        }
+
+        @-webkit-keyframes animsquare3 {
+            0%, 15%, 85%, 100% {
+                -webkit-transform: translate(0px, 0px) rotate(0deg);
+                transform: translate(0px, 0px) rotate(0deg)
+            }
+            40%, 60% {
+                -webkit-transform: translate(-40px, 0px) rotate(-90deg);
+                transform: translate(-40px, 0px) rotate(-90deg)
+            }
+        }
+
+        @keyframes animsquare3 {
+            0%, 15%, 85%, 100% {
+                -webkit-transform: translate(0px, 0px) rotate(0deg);
+                transform: translate(0px, 0px) rotate(0deg)
+            }
+            40%, 60% {
+                -webkit-transform: translate(-40px, 0px) rotate(-90deg);
+                transform: translate(-40px, 0px) rotate(-90deg)
+            }
+        }
+
+        @-webkit-keyframes animsquare4 {
+            0%, 20%, 80%, 100% {
+                -webkit-transform: translate(0px, 0px) rotate(0deg);
+                transform: translate(0px, 0px) rotate(0deg)
+            }
+            45%, 55% {
+                -webkit-transform: translate(-40px, 0px) rotate(-90deg);
+                transform: translate(-40px, 0px) rotate(-90deg)
+            }
+        }
+
+        @keyframes animsquare4 {
+            0%, 20%, 80%, 100% {
+                -webkit-transform: translate(0px, 0px) rotate(0deg);
+                transform: translate(0px, 0px) rotate(0deg)
+            }
+            45%, 55% {
+                -webkit-transform: translate(-40px, 0px) rotate(-90deg);
+                transform: translate(-40px, 0px) rotate(-90deg)
+            }
+        }
+
+        .preloader--hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+    <div class="loader">
+        <div class="l_main">
+            <div class="l_square"><span></span><span></span><span></span></div>
+            <div class="l_square"><span></span><span></span><span></span></div>
+            <div class="l_square"><span></span><span></span><span></span></div>
+            <div class="l_square"><span></span><span></span><span></span></div>
+        </div>
+    </div>
+</div>
+
+<noscript>
+    <strong>We're sorry but ew doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+</noscript>
+
+<script>(function () {
+    const preloader = document.getElementById('preloader');
+    document.addEventListener('DOMContentLoaded', function () {
+        preloader.classList.add('preloader--hidden');
+
+        setTimeout(function () {
+            preloader.style.zIndex = -99;
+        }, 1000);
+    });
+})();</script>
+
+<header class="section section--no-padding site-header">
+    <div class="container">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-12 col-md-7 col-lg-7 col-xl-3 d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <a href="/" class="logo__link" style="background-image: url('images/assets/logo.svg')"></a>
+                </div>
+
+                <div class="sandwich site-header__sandwich">
+                    <div class="sandwich__item"></div>
+                    <div class="sandwich__item"></div>
+                    <div class="sandwich__item"></div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-5 col-lg-5 col-xl-9 d-flex flex-column-reverse flex-md-row mt-3 mt-sm-0 align-items-center justify-content-md-end justify-content-xl-start">
+                <nav class="menu site-header__menu">
+                    <ul class="menu__list">
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">О компании</a>
+                        </li>
+
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Недвижимость</a>
+
+                            <ul class="menu__list">
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Инфо</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Новости</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Контакты</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Инфо</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Новости</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Контакты</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Услуги</a>
+
+                            <ul class="menu__list">
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Контакты</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Инфо</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Инфо</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Новости</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Контакты</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Инфо</a>
+
+                            <ul class="menu__list">
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Инфо</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Новости</a>
+                                </li>
+
+                                <li class="menu__item">
+                                    <a href="#" class="menu__link">Контакты</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Новости</a>
+                        </li>
+
+                        <li class="menu__item">
+                            <a href="#" class="menu__link">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <button class="button button--bg-ship-gray site-header__button">Заявка</button>
+
+                <div class="site-header__phone"><a href="tel:+49 30 889-203-99">+49 30 889-203-99</a></div>
+
+                <div class="languages-switch site-header__languages-switch align-self-end align-self-md-center">
+                    <ul class="languages-switch__list">
+                        <a class="languages-switch__item">
+                            <svg>
+                                <use xlink:href="images/assets/sprite.svg#symbol__russia"></use>
+                            </svg>
+                        </a>
+
+                        <a class="languages-switch__item">
+                            <svg>
+                                <use xlink:href="images/assets/sprite.svg#symbol__germany"></use>
+                            </svg>
+                        </a>
+
+                        <a class="languages-switch__item">
+                            <svg>
+                                <use xlink:href="images/assets/sprite.svg#symbol__united-kingdom"></use>
+                            </svg>
+                        </a>
+
+                        <a class="languages-switch__item">
+                            <svg>
+                                <use xlink:href="images/assets/sprite.svg#symbol__china"></use>
+                            </svg>
+                        </a>
+                    </ul>
+
+                    <div class="languages-switch__btn"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="section section--no-padding first-screen"
+         style="background-image: url('/images/assets/first-screen.png')">
+    <div class="container">
+        <div class="first-screen__content">
+            <header class="first-screen__header">Недвижимость в Германии</header>
+
+            <ul class="row first-screen__links">
+                <li class="col-12 col-lg-3 first-screen__link">
+                    <div class="link-tag first-screen__link-tag">
+                        <a href="#" class="link-tag__link">Квартиры и дома</a>
+                    </div>
+
+                    <div class="link-tag first-screen__link-tag">
+                        <a href="#" class="link-tag__link">Доходные квартиры</a>
+                    </div>
+                </li>
+
+                <li class="col-12 col-lg-3 first-screen__link">
+                    <div class="link-tag first-screen__link-tag">
+                        <a href="#" class="link-tag__link">Новостройки</a>
+                    </div>
+
+                    <div class="link-tag first-screen__link-tag">
+                        <a href="#" class="link-tag__link">Земельные участки</a>
+                    </div>
+                </li>
+
+                <li class="col-12 col-lg-6 first-screen__link">
+                    <div class="link-tag first-screen__link-tag">
+                        <a href="#" class="link-tag__link">Коммерческая недвижимость</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section section--no-padding section-search">
+    <div class="container">
+        <form class="search-block">
+            <div class="row no-gutters">
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="search-block__item">
+                        <header class="search-block__item-header">Расположение</header>
+
+                        <div class="base-select search-block__base-select">
+                            <select name="region" class="ui base-select__dropdown">
+                                <option value="">Регион</option>
+                                <option value="1">Саксония</option>
+                                <option value="0">Тюрингия</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <div class="base-select search-block__base-select">
+                                    <select name="city" class="ui base-select__dropdown">
+                                        <option value="">Город</option>
+                                        <option value="1">Берлин</option>
+                                        <option value="0">Мюнхен</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <div class="base-select search-block__base-select">
+                                    <select name="district" class="ui base-select__dropdown">
+                                        <option value="">Район</option>
+                                        <option value="1">Митте</option>
+                                        <option value="0">Пренцлауэр Берг</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="search-block__item">
+                        <header class="search-block__item-header">Недвижимость</header>
+
+                        <div class="base-select search-block__base-select">
+                            <select name="choose-estate" class="ui base-select__dropdown">
+                                <option value="">Выбрать недвижимость</option>
+                                <option value="1">Саксония</option>
+                                <option value="0">Тюрингия</option>
+                            </select>
+                        </div>
+
+                        <div class="row no-gutters">
+                            <div class="col-12 col-sm-6">
+                                <div class="base-select search-block__base-select">
+                                    <select name="estate-type" class="ui base-select__dropdown">
+                                        <option value="">Тип недвижимости</option>
+                                        <option value="1">Берлин</option>
+                                        <option value="0">Мюнхен</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <div class="base-select search-block__base-select">
+                                    <select name="estate-kind" class="ui base-select__dropdown">
+                                        <option value="">Вид недвижимости</option>
+                                        <option value="1">Митте</option>
+                                        <option value="0">Пренцлауэр Берг</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-2">
+                    <div class="search-block__item">
+                        <header class="search-block__item-header">Цена</header>
+
+                        <div class="base-select search-block__base-select">
+                            <select name="min-price" class="ui base-select__dropdown">
+                                <option value="">Минимальная цена</option>
+                                <option value="1">Берлин</option>
+                                <option value="0">Мюнхен</option>
+                            </select>
+                        </div>
+
+                        <div class="base-select search-block__base-select">
+                            <select name="max-price" class="ui base-select__dropdown">
+                                <option value="">Максимальная цена</option>
+                                <option value="1">Берлин</option>
+                                <option value="0">Мюнхен</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-2">
+                    <div class="search-block__item">
+                        <header class="search-block__item-header"></header>
+
+                        <div class="ui input base-input search-block__base-input">
+                            <input name="estate-id" class="base-input__input" type="text" placeholder="ID">
+                        </div>
+
+                        <button class="button button--bg-tree-poppy search-block__button">Поиск</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="section section-catalog">
+    <div class="container">
+        <header class="section__header">Жилая, элитная и доходная недвижимость в Германии</header>
+
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-catalog__col">
+                <div class="link-tile section-catalog__link-tile"
+                     style="background-image: url('/images/assets/flat.png')">
+                    <div class="link-tile__label">320</div>
+
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Квартиры</header>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-catalog__col">
+                <div class="link-tile section-catalog__link-tile"
+                     style="background-image: url('/images/assets/house.png')">
+                    <div class="link-tile__label">320</div>
+
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Дома</header>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-catalog__col">
+                <div class="link-tile section-catalog__link-tile"
+                     style="background-image: url('/images/assets/new-buildings.png')">
+                    <div class="link-tile__label">320</div>
+
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Новостройки</header>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-catalog__col">
+                <div class="link-tile section-catalog__link-tile"
+                     style="background-image: url('/images/assets/commerce.png')">
+                    <div class="link-tile__label">320</div>
+
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Коммерческая недвижимость</header>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-catalog__col">
+                <div class="link-tile section-catalog__link-tile"
+                     style="background-image: url('/images/assets/profitable-flats.png')">
+                    <div class="link-tile__label">320</div>
+
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Доходные квартиры</header>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-catalog__col">
+                <div class="link-tile section-catalog__link-tile"
+                     style="background-image: url('/images/assets/profitable-houses.png')">
+                    <div class="link-tile__label">320</div>
+
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Доходные дома</header>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-catalog__col">
+                <div class="link-tile section-catalog__link-tile"
+                     style="background-image: url('/images/assets/land.png')">
+                    <div class="link-tile__label">320</div>
+
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Земельные участки</header>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-catalog__col">
+                <div class="link-tile section-catalog__link-tile"
+                     style="background-image: url('/images/assets/investments.png')">
+                    <div class="link-tile__label">320</div>
+
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Инвест-проекты</header>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-region-catalog">
+    <div class="container">
+        <div class="header section__header">Недвижимость по регионам Германии</div>
+
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-region-catalog__col">
+                <div class="link-tile link-tile--big section-region-catalog__link-tile"
+                     style="background-image: url('/images/assets/berlin.png')">
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Берлин</header>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-region-catalog__col">
+                <div class="link-tile link-tile--big section-region-catalog__link-tile"
+                     style="background-image: url('/images/assets/bavaria.png')">
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Бавария</header>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-region-catalog__col">
+                <div class="link-tile link-tile--big section-region-catalog__link-tile"
+                     style="background-image: url('/images/assets/saksonia.png')">
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Саксония</header>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-12 col-xl-3 d-lg-flex d-xl-block section-region-catalog__col">
+                <div class="link-tile link-tile--big section-region-catalog__link-half-tile mr-lg-5 mr-xl-0"
+                     style="background-image: url('/images/assets/bottom-saksonia.png')">
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Нижняя Саксония</header>
+                    </a>
+                </div>
+
+                <div class="link-tile link-tile--big section-region-catalog__link-half-tile"
+                     style="background-image: url('/images/assets/turingia.png')">
+                    <a href="#" class="link-tile__link">
+                        <header class="link-tile__header">Тюрингия</header>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="germany-img-map">
+            <img src="/images/assets/map.jpg" alt="Германия">
+        </div>
+
+        <div id="germany-map">
+            <germany-map></germany-map>
+        </div>
+    </div>
+</section>
+
+<section class="section section-last-offers">
+    <div class="container">
+        <header class="section__header">Последние предложения</header>
+
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_1.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_2.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€2.170.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Жилой дом с коммерческими помещениями в центре Кельна</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_3.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_4.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3  section-last-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_5.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_6.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_7.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_1.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-popular-offers">
+    <div class="container">
+        <header class="section__header">Популярные объекты</header>
+
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-popular-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_1.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-popular-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_2.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€2.170.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Жилой дом с коммерческими помещениями в центре Кельна</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-popular-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_3.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-popular-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_4.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-popular-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_5.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-popular-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_6.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-popular-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_7.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-popular-offers__col">
+                <div class="offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">Бавария</header>
+                            </a>
+                        </div>
+
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">ID:1613</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_1.png')"></div>
+
+                    <div class="offer-card__descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__price">€70.00.000</div>
+
+                            <div class="offer-card__footage">9060 м2</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Современный 4* отель в центре западного Берлина в 100 м от
+                            Курфюрстендамм
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-slider">
+    <div class="container">
+        <header class="section__header section-slider__header">Как купить недвижимость в Германии</header>
+        
+        <div class="row">
+            <div class="col-1">
+                <div class="section-slider__arrow section-slider__arrow-prev">
+                    <svg>
+                        <use xlink:href="images/assets/sprite.svg#symbol__arrow"></use>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="col-2">
+                <div class="row justify-content-center">
+                    <div class="section-slider__img">
+                        <img src="/images/assets/girl.png" alt="">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-8">
+                <div class="section-slider__slider">
+                    <ul class="section-slider__slider-list">
+                        <li class="section-slider__item section-slider__item--active">
+                            <div class="section-slider__item-label">01</div>
+
+                            <div class="section-slider__item-content">
+                                <header class="section-slider__item-header">Подписание договора о поиске объекта</header>
+
+                                <header class="section-slider__item-text">Принимая решение купить доходную недвижимость в
+                                    Европе, многие профессиональные инвесторы отдают предпочтение Германии. И в этом нет
+                                    ничего удивительного. Доступные цены, надежность экономики и стабильность политической
+                                    ситуации в стране формируют благоприятный инвестиционный климат с возможностью
+                                    просчитать развитие рынка в долгосрочной перспективе.
+                                </header>
+                            </div>
+                        </li>
+
+                        <li class="section-slider__item">
+                            <div class="section-slider__item-label">02</div>
+
+                            <div class="section-slider__item-content">
+                                <header class="section-slider__item-header">Подписание договора о поиске объекта</header>
+
+                                <header class="section-slider__item-text">Принимая решение купить доходную недвижимость в
+                                    Европе, многие профессиональные инвесторы отдают предпочтение Германии. И в этом нет
+                                    ничего удивительного. Доступные цены, надежность экономики и стабильность политической
+                                    ситуации в стране формируют благоприятный инвестиционный климат с возможностью
+                                    просчитать развитие рынка в долгосрочной перспективе.
+                                </header>
+                            </div>
+                        </li>
+
+                        <li class="section-slider__item">
+                            <div class="section-slider__item-label">03</div>
+
+                            <div class="section-slider__item-content">
+                                <header class="section-slider__item-header">Подписание договора о поиске объекта</header>
+
+                                <header class="section-slider__item-text">Принимая решение купить доходную недвижимость в
+                                    Европе, многие профессиональные инвесторы отдают предпочтение Германии. И в этом нет
+                                    ничего удивительного. Доступные цены, надежность экономики и стабильность политической
+                                    ситуации в стране формируют благоприятный инвестиционный климат с возможностью
+                                    просчитать развитие рынка в долгосрочной перспективе.
+                                </header>
+                            </div>
+                        </li>
+
+                        <li class="section-slider__item">
+                            <div class="section-slider__item-label">04</div>
+
+                            <div class="section-slider__item-content">
+                                <header class="section-slider__item-header">Подписание договора о поиске объекта</header>
+
+                                <header class="section-slider__item-text">Принимая решение купить доходную недвижимость в
+                                    Европе, многие профессиональные инвесторы отдают предпочтение Германии. И в этом нет
+                                    ничего удивительного. Доступные цены, надежность экономики и стабильность политической
+                                    ситуации в стране формируют благоприятный инвестиционный климат с возможностью
+                                    просчитать развитие рынка в долгосрочной перспективе.
+                                </header>
+                            </div>
+                        </li>
+
+                        <li class="section-slider__item">
+                            <div class="section-slider__item-label">05</div>
+
+                            <div class="section-slider__item-content">
+                                <header class="section-slider__item-header">Подписание договора о поиске объекта</header>
+
+                                <header class="section-slider__item-text">Принимая решение купить доходную недвижимость в
+                                    Европе, многие профессиональные инвесторы отдают предпочтение Германии. И в этом нет
+                                    ничего удивительного. Доступные цены, надежность экономики и стабильность политической
+                                    ситуации в стране формируют благоприятный инвестиционный климат с возможностью
+                                    просчитать развитие рынка в долгосрочной перспективе.
+                                </header>
+                            </div>
+                        </li>
+
+                        <li class="section-slider__item">
+                            <div class="section-slider__item-label">06</div>
+
+                            <div class="section-slider__item-content">
+                                <header class="section-slider__item-header">Подписание договора о поиске объекта</header>
+
+                                <header class="section-slider__item-text">Принимая решение купить доходную недвижимость в
+                                    Европе, многие профессиональные инвесторы отдают предпочтение Германии. И в этом нет
+                                    ничего удивительного. Доступные цены, надежность экономики и стабильность политической
+                                    ситуации в стране формируют благоприятный инвестиционный климат с возможностью
+                                    просчитать развитие рынка в долгосрочной перспективе.
+                                </header>
+                            </div>
+                        </li>
+
+                        <li class="section-slider__item">
+                            <div class="section-slider__item-label">07</div>
+
+                            <div class="section-slider__item-content">
+                                <header class="section-slider__item-header">Подписание договора о поиске объекта</header>
+
+                                <header class="section-slider__item-text">Принимая решение купить доходную недвижимость в
+                                    Европе, многие профессиональные инвесторы отдают предпочтение Германии. И в этом нет
+                                    ничего удивительного. Доступные цены, надежность экономики и стабильность политической
+                                    ситуации в стране формируют благоприятный инвестиционный климат с возможностью
+                                    просчитать развитие рынка в долгосрочной перспективе.
+                                </header>
+                            </div>
+                        </li>
+
+                        <li class="section-slider__item">
+                            <div class="section-slider__item-label">08</div>
+
+                            <div class="section-slider__item-content">
+                                <header class="section-slider__item-header">Подписание договора о поиске объекта</header>
+
+                                <header class="section-slider__item-text">Принимая решение купить доходную недвижимость в
+                                    Европе, многие профессиональные инвесторы отдают предпочтение Германии. И в этом нет
+                                    ничего удивительного. Доступные цены, надежность экономики и стабильность политической
+                                    ситуации в стране формируют благоприятный инвестиционный климат с возможностью
+                                    просчитать развитие рынка в долгосрочной перспективе.
+                                </header>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-1">
+                <div class="section-slider__arrow section-slider__arrow-next">
+                    <svg>
+                        <use xlink:href="images/assets/sprite.svg#symbol__arrow"></use>
+                    </svg>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="section section-text" style="background-image: url('/images/assets/section-text.png')">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-12 col-lg-6 section-text__col">
+                <p class="section-text__p-16">Принимая решение купить доходную недвижимость в Европе, многие
+                    профессиональные инвесторы отдают предпочтение Германии.
+                    И в этом нет ничего удивительного. Доступные цены, надежность экономики и стабильность политической
+                    ситуации в стране формируют благоприятный инвестиционный климат с возможностью просчитать развитие
+                    рынка в долгосрочной перспективе.
+                    Однако для человека, владеющего неполной информацией об особенностях совершения сделки, не знающего
+                    всех тонкостей нормативно-правовой базы и системы налогообложения, приобретение элитного или
+                    доходного объекта в Германии может оказаться слишком сложным и рисковым предприятием.
+                    Поэтому, если вас интересует доходная недвижимость в Германии, лучшим решением станет обращение к
+                    профессионалам.</p>
+
+                <h2 class="section-text__h2">Правовая информация</h2>
+
+                <p class="section-text__p-15">Разрешение на осуществление риэлтерской деятельности выдано окружным
+                    управлением Шарлоттенбург — Вильмерсдорф, город Берлин в соответствии с § 34c Промыслового
+                    Уложения.</p>
+
+                <a href="#" class="section-text__link">Перейти к разделу Правовая информация</a>
+            </div>
+
+            <div class="col-12 col-lg-6 section-text__col">
+                <p class="section-text__p-16">Агентство EW Real Estate имеет большой опыт оказания квалифицированной
+                    помощи в данной сфере.
+                    Это не только продажа объектов недвижимости, но и консалтинг, оформление ипотечного кредита,
+                    послепродажное обслуживание и др.
+                    В нашем каталоге размещены исключительно проверенные доходные объекты в Германии, сопровождаемые
+                    реальными фото, подробными описаниями и актуальными ценами. Изучив наш сайт, вы сможете выбрать
+                    вариант, отвечающий всем вашим требованиям самостоятельно, либо воспользоваться услугой
+                    индивидуального подбора недвижимости. Вам достаточно сообщить, какая стоимость жилья для вас
+                    предпочтительна, какой район страны вас интересует, и наши консультанты отберут для вас подходящие
+                    предложения. В дальнейшем мы обеспечим полное риэлторское сопровождение с гарантией ее
+                    конфиденциальности. О качестве и добросовестности нашей работы свидетельствуют многочисленные отзывы
+                    наших клиентов – русскоязычных граждан из стран СНГ и Балтии.
+                    С нами доходная и элитная недвижимость в Германии становится ближе, реальнее и доступнее!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-last-news">
+    <div class="container">
+        <header class="section__header">Последние Новости</header>
+
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-news__col">
+                <div class="offer-card section-last-news__offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">17.09.2018</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_1.png')"></div>
+
+                    <div class="offer-card__descr section-last-news__order-card-descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__topic">Рынок недвижимости Дюссельдорфа</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Рынок недвижимости Дюссельдорфа: цены, районы, перспективы
+                            Дюссельдорф славится своей шикарной Королевской аллеей, или как ее называют местные, просто
+                            «Kö»
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-news__col">
+                <div class="offer-card section-last-news__offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">17.09.2018</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_2.png')"></div>
+
+                    <div class="offer-card__descr section-last-news__order-card-descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__topic">Недвижимость Гамбурга</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Недвижимость Гамбурга: самые бюджетные и самые дорогие
+                            районы
+                            Продолжая цикл статей о ценовом делении рынка недвижимости крупнейших городов Германии,
+                            нельзя
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-news__col">
+                <div class="offer-card section-last-news__offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">17.09.2018</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_3.png')"></div>
+
+                    <div class="offer-card__descr section-last-news__order-card-descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__topic">Ипотечные ставки в Германии</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Ипотечные ставки в Германии: динамика и прогноз на 2018 год
+                            Давайте начнем с выяснения базовых терминов. Итак, ипотечная ставка
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 section-last-news__col">
+                <div class="offer-card section-last-news__offer-card">
+                    <div class="offer-card__label">
+                        <div class="offer-card__title">
+                            <a href="#" class="offer-card__title-link">
+                                <header class="offer-card__title-text">17.09.2018</header>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="offer-card__img" style="background-image: url('/images/assets/offer_4.png')"></div>
+
+                    <div class="offer-card__descr section-last-news__order-card-descr">
+                        <div class="offer-card__descr-title">
+                            <div class="offer-card__topic">Ипотечные ставки в Германии</div>
+                        </div>
+
+                        <div class="offer-card__descr-text">Ипотечные ставки в Германии: динамика и прогноз на 2018 год
+                            Давайте начнем с выяснения базовых терминов. Итак, ипотечная ставка
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section--no-padding section-consultation-form">
+    <div class="container">
+        <form class="consultation-form section-consultation-form__consultation-form">
+            <div class="row no-gutters justify-content-end">
+                <div class="col-12 col-lg-6 col-xl-6 mb-4 mb-lg-0">
+                    <div class="consultation-form__item">
+                        <header class="consultation-form__item-header">
+                            Не нашли, что искали? Нужна консультация? Оставьте номер своего телефона и мы вам перезвоним.
+                        </header>
+
+                        <div class="consultation-form__item-text">
+                            Нажимая "Отправить" вы соглашаетесь с правилами обработки персональных данных и <a href="#" class="consultation-form__item-link">политикой конфиденциальности</a>  EW Real Estate
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="consultation-form__item">
+                        <div class="ui input base-input consultation-form__base-input">
+                            <input class="base-input__input" type="text" placeholder="Как к Вам обращаться">
+                        </div>
+
+                        <div class="ui input base-input consultation-form__base-input">
+                            <input id="phone" class="base-input__input base-input__phone" type="tel" placeholder="Ваш номер телефона">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-2 align-self-end">
+                    <div class="consultation-form__item">
+                        <button class="button button--bg-tree-poppy consultation-form__button">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<footer class="section site-footer" style="background-image: url('/images/assets/site-footer.png')">
+    <div class="container">
+        <div class="row justify-content-center justify-content-lg-between">
+            <div class="col-12 col-xl-3 order-4 order-xl-0 site-footer__col">
+                <div class="logo site-footer__logo">
+                    <a href="/" class="logo__link" style="background-image: url('images/assets/logo.svg')"></a>
+                </div>
+
+                <div class="site-footer__contacts">
+                    <p class="site-footer__contacts-item">Kurfürstendamm 45 Berlin 10719</p>
+
+                    <div class="site-footer__contacts-phones site-footer__contacts-item">
+                        <a href="tel:+49 30 889-203-99" class="site-footer__contacts-phone">+49 30 889-203-99</a><br>
+
+                        <a href="tel:+49 178 519-87-28" class="site-footer__contacts-phone">+49 178 519-87-28</a>
+                    </div>
+
+                    <a href="mailto:info@ew-realestate.de" class="site-footer__contacts-item site-footer__contacts-email">info@ew-realestate.de</a>
+
+                    <p class="site-footer__contacts-item">skype: east-westrealestate</p>
+
+                    <p class="site-footer__contacts-item">Игорь Зиберт</p>
+
+                    <div class="site-footer__social-networks">
+                        <a href="#" class="site-footer__icon site-footer__fb">
+                            <svg>
+                                <use xlink:href="images/assets/sprite.svg#symbol__fb"></use>
+                            </svg>
+                        </a>
+
+                        <a href="#" class="site-footer__icon site-footer__tw">
+                            <svg>
+                                <use xlink:href="images/assets/sprite.svg#symbol__tw"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 col-xl-2 site-footer__col">
+                <h2 class="site-footer__title">Навигация</h2>
+
+                <nav class="site-footer__menu">
+                    <ul class="site-footer__menu-list">
+                        <li class="site-footer__item">
+                            <a href="#" class="site-footer__menu-link">Главная</a>
+                        </li>
+
+                        <li class="site-footer__item">
+                            <a href="#" class="site-footer__menu-link">О компании</a>
+                        </li>
+
+                        <li class="site-footer__item">
+                            <a href="#" class="site-footer__menu-link">Информация</a>
+                        </li>
+
+                        <li class="site-footer__item">
+                            <a href="#" class="site-footer__menu-link">Новости</a>
+                        </li>
+
+                        <li class="site-footer__item">
+                            <a href="#" class="site-footer__menu-link">Контакты</a>
+                        </li>
+
+                        <li class="site-footer__item">
+                            <a href="#" class="site-footer__menu-link">Заявка online</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col-12 col-md-4 col-xl-2 site-footer__col">
+                <h2 class="site-footer__title">Услуги</h2>
+
+                <nav class="site-footer__menu">
+                    <ul class="site-footer__menu-list">
+                        <li class="site-footer__item">
+                            <a href="#" class="site-footer__menu-link">Индивидуальный поиск и продажа недвижимости</a>
+                        </li>
+
+                        <li class="site-footer__item">
+                            <a href="#" class="site-footer__menu-link"> Послепродажное обслуживание</a>
+                        </li>
+
+                        <li class="site-footer__item">
+                            <a href="#" class="site-footer__menu-link">Открытие счета в банке</a>
+                        </li>
+
+                        <li class="site-footer__item">
+                            <a href="#" class="site-footer__menu-link">Ипотечный кредит</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col-12 col-md-4 col-xl-4 site-footer__col">
+                <h2 class="site-footer__title">Недвижимость</h2>
+
+                <div class="row flex-column flex-xl-row justify-content-xl-between pl-3">
+                    <nav class="site-footer__menu">
+                        <ul class="site-footer__menu-list">
+                            <li class="site-footer__item">
+                                <a href="#" class="site-footer__menu-link">Квартиры</a>
+                            </li>
+
+                            <li class="site-footer__item">
+                                <a href="#" class="site-footer__menu-link">Дома и виллы</a>
+                            </li>
+
+                            <li class="site-footer__item">
+                                <a href="#" class="site-footer__menu-link">Доходные квартиры</a>
+                            </li>
+
+                            <li class="site-footer__item">
+                                <a href="#" class="site-footer__menu-link">Доходные дома</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <nav class="site-footer__menu">
+                        <ul class="site-footer__menu-list">
+                            <li class="site-footer__item">
+                                <a href="#" class="site-footer__menu-link">Коммерческая недвижимость</a>
+                            </li>
+
+                            <li class="site-footer__item">
+                                <a href="#" class="site-footer__menu-link">Новостройки</a>
+                            </li>
+
+                            <li class="site-footer__item">
+                                <a href="#" class="site-footer__menu-link">Земля</a>
+                            </li>
+
+                            <li class="site-footer__item">
+                                <a href="#" class="site-footer__menu-link">Инвестиции</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- built files will be auto injected -->
+</body>
+</html>

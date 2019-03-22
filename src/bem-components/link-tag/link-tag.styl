@@ -1,0 +1,30 @@
+@import "../../styles/global/global.styl"
+
+.link-tag
+	display: inline-block
+	
+	&__link
+		position: relative
+		padding-bottom: 3px
+		border-bottom: solid 1px $ship-gray
+		text-decoration: none
+		font-size: $px_16
+		color: $ship-gray
+		transition: .1s
+		@media(min-width: $small)
+			font-size: $px_18
+
+		&::before
+			content: ''
+			position: absolute
+			bottom: -2px
+			width: 0
+			height: 1px
+			background-color: $pure-black
+			transition: .5s
+		
+		&:hover
+			text-decoration: none
+			color: $pure-black
+			&::before
+				width: 100%

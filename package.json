@@ -1,0 +1,29 @@
+{
+  "name": "ew",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "gsap": "^2.1.2",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.11",
+    "jquery.maskedinput": "^1.4.1",
+    "semantic-ui-button": "^2.3.2",
+    "semantic-ui-dropdown": "^2.4.1",
+    "semantic-ui-input": "^2.4.0",
+    "semantic-ui-transition": "^2.3.1",
+    "vue": "^2.6.6"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "slick-carousel": "^1.8.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-template-compiler": "^2.5.21"
+  }
+}

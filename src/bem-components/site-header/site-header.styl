@@ -1,0 +1,51 @@
+@import "../../styles/global/global.styl"
+
+.site-header
+  position: sticky
+  top: 0
+  padding: 10px 0 0
+  color: $ship-gray
+  background-color: $pure-white
+  z-index 3
+  user-select: none
+  @media(min-width: $small)
+    padding: 15px 0
+
+  &__button
+    margin-top: 10px
+    margin-bottom: 10px
+    width: 91px
+    font-size: $px_15
+    @media(min-width: $medium)
+      margin-bottom: 0
+      margin-right: 30px
+
+  &__phone
+    margin-top: 10px
+    margin-bottom: 10px
+    font-size: $px_15
+    line-height: $px_18
+    font-weight: 600
+    color: $ship-gray
+    @media(min-width: $small)
+      margin-top: 30px
+    @media(min-width: $medium)
+      margin-right: 30px
+      margin-bottom: 0
+      margin-top: 0
+      font-size: 13px
+    @media(min-width: $large)
+      font-size: $px_14
+    a
+      color: $ship-gray
+      transition: .1s
+      &:hover
+        color: $tree-poppy
+        text-decoration: none
+    @media(min-width: $max)
+      font-size: $px_15
+
+  &__sandwich
+    @media(min-width: $medium)
+      margin-bottom: 0
+      margin-right: 30px

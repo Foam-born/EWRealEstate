@@ -1,0 +1,89 @@
+@import "../../styles/global/global.styl"
+
+.section-slider
+	min-height: 850px
+	padding-top: 0
+	background-color: $ship-gray
+	text-align: center
+	color: $pure-white
+	user-select: none
+	overflow: hidden
+	&__img
+		@media (max-width: $large)
+			display: none
+
+	&__content
+		position: relative
+
+	&__header
+		position: relative
+		z-index: 1
+		padding-top: 60px
+		background-color: $ship-gray
+		color: $pure-white
+
+	&__img
+		size(290px, 252px)
+		transform: translateX(50px)
+
+	&__arrows
+		position: absolute
+		width: 100%
+		top: 50%
+		left: 0
+		display: flex
+		justify-content: space-between
+
+	&__arrow
+		height: 41px
+		width: 80px
+		overflow: hidden
+		cursor: pointer
+		transiotion: .2s
+		&:hover
+			opacity: .5
+		svg
+			size(100%)
+			fill: $gray
+
+	&__arrow-prev
+		transform: rotate(180deg)
+
+	&__slider-list
+		max-width: 730px
+		max-height: 600px
+		cursor: move
+
+	&__item
+		position: relative
+		display: flex
+		align-items: flex-start
+		padding-left: 50px
+		text-align: left
+		font-size: $px_16
+		line-height: $px_24
+
+		&--active
+			left: -60px
+			margin-bottom: 50px
+
+			.section-slider__item-label
+				font-size: 80px
+				color: $tree-poppy
+
+			.section-slider__item-text
+				max-height: 500px
+				transition: max-height 5s cubic-bezier(.36, 1.76, .05, .65)
+
+	&__item-label
+		padding-right: 15px
+		font-size: $px_20
+
+	&__item-header
+		margin-bottom: 30px
+		font-size: $px_20
+
+	&__item-text
+		max-height: 0
+		overflow: hidden
+		font-size: $px_16

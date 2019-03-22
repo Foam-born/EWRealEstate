@@ -1,0 +1,52 @@
+@import "../../styles/global/global.styl"
+
+.offer-card
+  height: 393px
+  display: flex
+  flex-direction: column
+  font-size: $px_16
+  line-height: $px_24
+
+  &__label
+    margin-bottom: 5px
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+  &__title-link
+    display: block
+    color: $ship-gray
+    text-decoration: none
+    &:hover
+      text-decoration: none
+      color: $ship-gray
+
+  &__img
+    height: 280px
+    background-size: cover
+    background-repeat: no-repeat
+    border-radius: 1px
+    @media(min-width: $small)
+      height: 210px
+
+  &__descr
+    min-height: 161px
+    padding: 25px 20px
+    display: flex
+    flex-direction: column
+    color: $ship-gray
+    background-color: $seashell
+    border-radius: 1px
+
+  &__descr-title
+    margin-bottom: 15px
+    display: flex
+    justify-content: space-between
+
+  &__price
+    color: $tree-poppy
+    font-size: $px_24
+
+  &__topic
+    font-size: $px_24
+    line-height: $px_32

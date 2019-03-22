@@ -1,0 +1,107 @@
+@import "../../styles/global/global.styl"
+
+.menu
+  display: none
+  transform translateY(-1000px)
+  transition: .5s
+  @media(min-width: $extra-large)
+    display: block
+    transform: none
+
+  &--mobile-view
+    transform none
+    display: block
+    position: fixed
+    left: 0
+    top: 90px
+    z-index: 2
+    background-color: $pure-white
+    size(100vw, 100vh)
+    .menu__list
+      flex-direction: column
+      justify-content: center
+      align-items: center
+    .menu__item
+      padding-right: 20px
+      text-align: center
+    .menu__btn
+      bottom: 7px
+    & > .menu__list
+      padding-top: 50px
+
+  &__list
+    display: flex
+
+  &__item
+    position: relative
+    margin-right: 20px
+    padding-right: 10px
+    @media(min-width: $max)
+      padding-right: 15px
+    & > .menu__list
+      position: relative
+      top: 100%
+      display: none
+      padding: 15px
+      border-radius: 1px
+      z-index: 2
+      text-align: center
+      @media(min-width: $extra-large)
+        position: absolute
+        top: calc(100% +1px)
+        left: 50%
+        background-color: alpha($ship-gray, .3)
+        border: 1px solid alpha($ship-gray, .5)
+        text-align: left
+      .menu__link
+        line-height: $px_20
+        font-weight: 400
+        &::after
+          background-color: $pure-white
+        @media(min-width: $extra-large)
+          color: $pure-white
+       .menu__item
+         margin-right: 0
+         padding-right: 0
+
+  &__btn
+    display: none
+    position: absolute
+    bottom: 5px
+    right: 0
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: 5px 5px 0 5px
+    border-color: $crimson transparent transparent transparent
+    cursor: pointer
+    transition: .3s
+    @media(min-width: $extra-large)
+      display: block
+    &--rotate
+      transform rotate(180deg)
+
+  &__link
+    position: relative
+    font-size: 12px
+    line-height: $px_18
+    font-weight: 600
+    text-transform: uppercase
+    color: $ship-gray
+    @media(min-width: $max)
+      font-size: $px_15
+    &::after
+      position: absolute
+      content: ''
+      bottom: 0
+      left: 0
+      width: 0
+      height: 2px
+      background-color: $ship-gray
+      transition: .3s
+    &:hover
+      &::after
+        width: 100%
+    &:hover
+      color: $ship-gray
+      text-decoration: none

@@ -1,0 +1,20 @@
+@import "../../styles/global/global.styl"
+
+.section
+  width: 100vw
+  padding: 40px 0
+  background-repeat: no-repeat
+  background-size: cover
+  @media(min-width: $medium)
+    padding: 60px 0
+
+  &--no-padding
+    padding: 0
+
+  &__header
+    margin-bottom: 60px
+    font-size: $px_28
+    line-height: $px_32
+    @media(min-width: $small)
+      font-size: $px_36
+      line-height: $px_50

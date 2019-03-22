@@ -1,0 +1,20 @@
+@import "../../styles/global/global.styl"
+
+.section-region-catalog
+  background-color: #F1F1F1
+
+  &__col
+    margin-bottom: 30px
+
+  &__link-tile
+    height: 350px
+
+  &__link-half-tile
+    height: 350px
+    margin-bottom: 30px
+    @media(min-width: $small)
+      height: 160px
+    @media(min-width: $large)
+      height: 350px
+    @media(min-width: $extra-large)
+      height: 160px

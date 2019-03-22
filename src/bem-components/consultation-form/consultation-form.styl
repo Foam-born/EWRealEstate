@@ -1,0 +1,58 @@
+@import "../../styles/global/global.styl"
+
+.consultation-form
+  padding: 30px
+  background-color: #F1F1F1
+
+  &__item
+    height: 100%
+    padding: 0 5px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+  &__item-header
+    min-height: 15px
+    margin-bottom: 15px
+    letter-spacing: 0.05em
+    color: $ship-gray
+    font-size: $px_18
+    line-height: $px_22
+    text-align: center
+    @media(min-width: $small)
+      text-align: left
+    @media(min-width: $large)
+      text-align: right
+    @media(min-width: $max)
+      font-size: $px_22
+      line-height: $px_30
+
+  &__item-text
+    font-size: 12px
+    line-height: 18px
+    color: $ship-gray
+    text-align: center
+    @media(min-width: $small)
+      text-align: left
+    @media(min-width: $large)
+      text-align: right
+
+  &__item-link
+    color: $tree-poppy
+    &:hover
+      color: $tree-poppy
+
+  &__base-input
+    &:not(:last-child)
+      margin-bottom: 15px
+
+  &__base-select
+    margin-bottom: 15px
+
+  &__button
+    margin-top: 15px
+    width: 100%
+    min-height: 50px
+    font-size: $px_18
+    @media(min-width: $extra-large)
+      margin-top: 0
